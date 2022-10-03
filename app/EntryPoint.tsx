@@ -7,7 +7,7 @@ import Navigator from 'app/navigation';
 import { persistor, store } from 'app/store';
 import { RootState } from 'app/store/slice';
 import React, { useEffect } from 'react';
-import { ActivityIndicator, LogBox } from 'react-native';
+import { ActivityIndicator, LogBox, SafeAreaView } from 'react-native';
 import codePush from 'react-native-code-push';
 import { Provider as PaperProvider } from 'react-native-paper';
 import SplashScreen from 'react-native-splash-screen';

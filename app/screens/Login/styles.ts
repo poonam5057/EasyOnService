@@ -9,30 +9,41 @@ export const useStyle = () => {
         StyleSheet.create({
             container: {
                 flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: isDark ? 'black' : 'white',
+                marginTop: '50%',
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // backgroundColor: isDark ? 'black' : 'white',
             },
             subContainer: {
                 marginTop: '10%',
                 // backgroundColor: colors.primary,
-                borderRadius: 20,
+                // borderRadius: 20,
                 alignItems: 'center',
-                borderWidth: 2,
-                padding: 20,
-                borderColor: isDark ? 'teal' : 'black',
+                // borderWidth: 2,
+                // padding: 20,
+                // borderColor: isDark ? 'teal' : 'black',
             },
 
             login: {
                 padding: 8,
             },
             forgot: {
-                marginTop: 5,
+                // marginTop: 5,
             },
             labelStyle: {
                 padding: 10,
                 fontSize: 15,
                 color: isDark ? 'teal' : 'black',
+            },
+            textInputView: {
+                padding: 5,
+                margin: 5,
+                marginHorizontal: 20,
+            },
+            textInputController: {
+                overflow: 'hidden',
+                color: 'white',
+                backgroundColor: 'white',
             },
         });
     return React.useMemo(() => styles(), [isDark]);
