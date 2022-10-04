@@ -58,7 +58,7 @@ const Login: React.FC = () => {
         <View style={styles.container}>
             <ImageBackground
                 source={require('../../assets/images/laptop.png')}
-                style={{ width: '100%', height: '100%' }}
+                style={{flex:1, width: '100%', height: '100%' }}
                 resizeMode={'cover'}>
                 {/* <ScrollView
                 contentContainerStyle={{
@@ -118,7 +118,7 @@ const Login: React.FC = () => {
                     </View>
                     <View style={styles.textInputView}>
                         <TextInputController
-                            mode="outlined"
+                            mode="flat"
                             placeholder="Email"
                             label="Email"
                             text={email}
@@ -131,7 +131,7 @@ const Login: React.FC = () => {
                     </View>
                     <View style={styles.textInputView}>
                         <TextInputController
-                            mode="outlined"
+                            mode="flat"
                             placeholder="Password"
                             label="Password"
                             text={password}
