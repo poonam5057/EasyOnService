@@ -9,9 +9,9 @@ export const useStyle = () => {
         StyleSheet.create({
             container: {
                 flex: 1,
-                marginTop: '50%',
-                // justifyContent: 'center',
-                // alignItems: 'center',
+                //  marginTop: 70,
+                justifyContent: 'center',
+                alignItems: 'center',
                 // backgroundColor: isDark ? 'black' : 'white',
             },
             subContainer: {
@@ -33,7 +33,9 @@ export const useStyle = () => {
             labelStyle: {
                 padding: 10,
                 fontSize: 15,
-                color: isDark ? 'teal' : 'black',
+                textAlign: 'right',
+                marginHorizontal: 20,
+                color: 'white',
             },
             textInputView: {
                 padding: 5,

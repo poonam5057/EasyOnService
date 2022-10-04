@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ForgotPassword from 'app/screens/ForgotPassword';
 import Login from 'app/screens/Login';
+import Register from 'app/screens/Register';
 import * as React from 'react';
 import { StatusBar, SafeAreaView } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -65,6 +66,18 @@ const AuthNavigator = () => {
                     },
                 }}
             />
+            <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{
+                    // When logging out, a pop animation feels intuitive
+                    // You can remove this if you want the default 'push' animation
+                    animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                    headerStyle: {
+                        backgroundColor: theme.colors.accent,
+                    },
+                }}
+            />
         </AuthStack.Navigator>
     );
 };
@@ -97,7 +110,7 @@ const App: React.FC = () => {
 
     return (
         <NavigationContainer ref={navigationRef}>
-            <SafeAreaView style={{ flex:1}}>
+            <SafeAreaView style={{ flex: 1 }}>
                 <StatusBar />
 
                 {isLoggedIn ? <LoggedInNavigator /> : <AuthNavigator />}
