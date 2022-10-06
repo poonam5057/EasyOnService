@@ -6,12 +6,22 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const requestLogin = createAction(
     types.LOGIN_REQUEST,
-    function prepare(username: string, password: string) {
-        return {
-            payload: {
-                username,
-                password,
-            },
-        };
-    },
+    (username: string, password: string) => ({
+        payload: {
+            username,
+            password,
+        },
+    }),
 );
+
+// export const onLogin = createAction(types.LOGIN_SUCCESS, (data: any) => ({
+//     payload: {
+//         data,
+//     },
+// }));
+
+// export const loginFailed = createAction(types.LOGIN_FAILURE, (error: any) => ({
+//     payload: {
+//         error,
+//     },
+// }));

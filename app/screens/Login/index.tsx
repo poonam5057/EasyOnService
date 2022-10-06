@@ -11,6 +11,7 @@ import {
     View,
     ImageBackground,
     Image,
+    Alert,
 } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
@@ -27,32 +28,14 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const theme = useTheme();
-    const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
+    const onLogin = () => {
+        if (email && password) {
+            dispatch(loginActions.requestLogin(email, password));
+        } else {
+            Alert.alert('Please enter email and password');
+        }
+    };
     const onForgot = () => NavigationService.navigate('ForgotPassword');
-    // const rotation = new Animated.Value(0);
-    // const rotationValue = rotation.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: ['0deg', '360deg'],
-    // });
-    // const opacityValue = new Animated.Value(0);
-
-    // useEffect(() => {
-    //     Animated.timing(rotation, {
-    //         toValue: 1,
-    //         duration: 5000,
-    //         easing: Easing.bounce,
-
-    //         useNativeDriver: true,
-    //     }).start();
-
-    //     setTimeout(() => {
-    //         Animated.spring(opacityValue, {
-    //             toValue: 1,
-    //             stiffness: 20,
-    //             useNativeDriver: true,
-    //         }).start();
-    //     }, 5000);
-    // }, []);
 
     return (
         <View style={styles.container}>
@@ -161,7 +144,10 @@ const Login: React.FC = () => {
                                 backgroundColor: 'grey',
                                 // height: 50,
                                 borderRadius: 10,
-                            }}>
+                            }}
+                            onPress={() => 
+                                onLogin()
+                             }>
                             <Text
                                 style={{
                                     fontSize: FontSize.FONT_SIZE_M,

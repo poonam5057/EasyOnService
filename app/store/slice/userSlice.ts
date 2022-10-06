@@ -22,11 +22,17 @@ const loginSlice = createSlice({
                 ...action.payload,
             };
         },
+        onLoginFailed: (state, action) => {
+            return {
+                ...state,
+                isLoggedIn: false,
+            };
+        },
         logOut: () => {
             return initialState;
         },
     },
 });
 
-export const { onLogin, logOut } = loginSlice.actions;
+export const { onLogin, logOut, onLoginFailed } = loginSlice.actions;
 export default loginSlice.reducer;

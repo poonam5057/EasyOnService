@@ -4,28 +4,25 @@
  * un - username
  * pwd - password
  */
-import { put } from 'redux-saga/effects';
-// import { delay } from 'redux-saga';
+import { put, call } from 'redux-saga/effects';
 
-import * as loadingAction from 'app/store/slice/loadingSlice';
 import * as loginActions from 'app/store/slice/userSlice';
+import loginUser from 'app/services/loginUser';
+import { Alert } from 'react-native';
 
 // Our worker Saga that logins the user
-export default function* loginAsync() {
-    yield put(loadingAction.enableLoader());
-
-    //how to call api
-    //const response = yield call(loginUser, action.username, action.password);
-    //mock response
-    const response = { success: true, data: { id: 1 }, message: 'Success' };
-
-    if (response.success) {
-        yield put(loginActions.onLogin(response.data));
-        yield put(loadingAction.disableLoader());
-
-        // no need to call navigate as this is handled by redux store with SwitchNavigator
-        //yield call(navigationActions.navigateToHome);
-    } else {
-        yield put(loadingAction.disableLoader());
+export default function* loginAsync(action: any): any {
+    try {
+        console.log('loginAsync', action);
+        const response = yield call(loginUser, action.payload.username, action.payload.password);
+        if (response.status === 200) {
+            yield put(loginActions.onLogin(response.data));
+        } else {
+            yield put(loginActions.onLoginFailed(response.data));
+            Alert.alert('Login Failed.', response.data.message);
+        }
+    } catch (error) {
+        yield put(loginActions.onLoginFailed(error));
+        // Alert.alert('Login Failed..', error?.message);
     }
 }
