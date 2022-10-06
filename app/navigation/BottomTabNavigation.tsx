@@ -20,7 +20,7 @@ const BottomTabNavigation = () => {
                     borderRadius: 20,
                     position: 'absolute',
                     margin: 10,
-                    marginBottom: 20,
+                    marginBottom: 10,
                     alignItems: 'center',
                     height: 70,
                     justifyContent: 'center',
@@ -48,7 +48,7 @@ const BottomTabNavigation = () => {
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="chat" color={color} size={size} />
                     ),
-                    tabBarBadge: 2,
+                    //tabBarBadge: 2,
                 }}
             />
             <Tab.Screen

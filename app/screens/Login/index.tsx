@@ -41,40 +41,8 @@ const Login: React.FC = () => {
         <View style={styles.container}>
             <ImageBackground
                 source={require('../../assets/images/laptop.png')}
-                style={{flex:1, width: '100%', height: '100%' }}
+                style={{ flex: 1, width: '100%', height: '100%' }}
                 resizeMode={'cover'}>
-                {/* <ScrollView
-                contentContainerStyle={{
-                    flex: 1,
-                    backgroundColor: theme.colors.accent,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                <Animated.Image
-                    source={require('app/assets/react-native.png')}
-                    style={{ transform: [{ rotate: rotationValue }] }}
-                />
-                <Animated.Text
-                    style={{
-                        fontSize: 20,
-                        color: 'teal',
-                        fontWeight: 'bold',
-                        opacity: opacityValue,
-                    }}>
-                    {t('GSoft Boiler Plate')}
-                </Animated.Text>
-                <View style={styles.subContainer}>
-                    <StdButton
-                        title={t('Login')}
-                        onPress={onLogin}
-                        icon="login"
-                        iconColor={theme.colors.background === 'white' ? 'white' : 'black'}
-                    />
-                    <TouchableOpacity style={styles.forgot} onPress={onForgot}>
-                        <Text style={styles.labelStyle}>{t('Forgot Password')}</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView> */}
                 <View
                     style={{
                         //height: '65%',
@@ -145,9 +113,7 @@ const Login: React.FC = () => {
                                 // height: 50,
                                 borderRadius: 10,
                             }}
-                            onPress={() => 
-                                onLogin()
-                             }>
+                            onPress={() => onLogin()}>
                             <Text
                                 style={{
                                     fontSize: FontSize.FONT_SIZE_M,

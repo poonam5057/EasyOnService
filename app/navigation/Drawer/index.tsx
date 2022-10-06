@@ -96,9 +96,9 @@ const Drawer: React.FC = (props) => {
                 {/* <View style={styles.preference}>
                     <Text style={styles.text}>{t('Theme')} </Text>
                     <ThemeController />
-                </View>
+                </View> */}
 
-                <List.Accordion
+                {/* <List.Accordion
                     theme={theme}
                     title={<Text style={styles.text}>{t('Languages')} </Text>}>
                     <TouchableOpacity
