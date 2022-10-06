@@ -1,9 +1,13 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: '/react-dev',
+    baseURL: 'https://9e60-122-170-53-185.in.ngrok.io/api/',
     responseType: 'json',
     withCredentials: true,
 });
 
-export { apiClient };
+const allApi = {
+    LOGIN: 'user/Login',
+};
+
+export { apiClient, allApi };

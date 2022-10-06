@@ -86,7 +86,7 @@ TextInputController.defaultProps = {
   right: null,
   disabled: false,
   activeUnderlineColor: '',
-  maxLength: 10,
+  maxLength: 50,
   multiline: false,
   numberOfLines: 1,
   theme:{},

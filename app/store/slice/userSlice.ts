@@ -2,13 +2,15 @@
  * handles login states in the app
  */
 import { createSlice } from '@reduxjs/toolkit';
-
-import { LoginState } from 'app/models/reducers/login';
+interface LoginState {
+    isLoggedIn: boolean;
+    data: any;
+    error: any;
+}
 const initialState: LoginState = {
     isLoggedIn: false,
-    id: 0,
-    username: '',
-    password: '',
+    data: null,
+    error: null,
 };
 
 const loginSlice = createSlice({
@@ -26,6 +28,7 @@ const loginSlice = createSlice({
             return {
                 ...state,
                 isLoggedIn: false,
+                error: action.payload,
             };
         },
         logOut: () => {

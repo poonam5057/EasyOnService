@@ -93,7 +93,7 @@ const Drawer: React.FC = (props) => {
                     inactiveBackgroundColor="transparent"
                 />
 
-                <View style={styles.preference}>
+                {/* <View style={styles.preference}>
                     <Text style={styles.text}>{t('Theme')} </Text>
                     <ThemeController />
                 </View>
@@ -174,7 +174,7 @@ const Drawer: React.FC = (props) => {
                         />
                         <Text style={styles.chekboxtext}>German</Text>
                     </TouchableOpacity>
-                </List.Accordion>
+                </List.Accordion> */}
                 <DrawerItem
                     icon={({ size }) => (
                         <MaterialCommunityIcons

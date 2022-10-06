@@ -13,7 +13,6 @@ import { Alert } from 'react-native';
 // Our worker Saga that logins the user
 export default function* loginAsync(action: any): any {
     try {
-        console.log('loginAsync', action);
         const response = yield call(loginUser, action.payload.username, action.payload.password);
         if (response.status === 200) {
             yield put(loginActions.onLogin(response.data));
@@ -22,7 +21,7 @@ export default function* loginAsync(action: any): any {
             Alert.alert('Login Failed.', response.data.message);
         }
     } catch (error) {
-        yield put(loginActions.onLoginFailed(error));
-        // Alert.alert('Login Failed..', error?.message);
+        Alert.alert('Login Failed.', error?.response.data.message);
+        yield put(loginActions.onLoginFailed(error?.response?.data));
     }
 }

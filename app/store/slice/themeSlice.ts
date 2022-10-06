@@ -3,7 +3,9 @@
  * Avoid data persist
  */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ThemeState } from 'app/models/reducers/theme';
+interface ThemeState {
+    isDark: boolean;
+}
 
 const initialState: ThemeState = {
     isDark: false,

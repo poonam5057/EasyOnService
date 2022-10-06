@@ -2,8 +2,11 @@
  * Loading reducer made separate for easy blacklisting
  * Avoid data persist
  */
-import { LoadingState } from 'app/models/reducers/loading';
+// import { LoadingState } from 'app/models/reducers/loading';
 import { createSlice } from '@reduxjs/toolkit';
+interface LoadingState {
+    loading: boolean;
+}
 const initialState: LoadingState = {
     loading: false,
 };
@@ -21,7 +24,7 @@ const loadingSlice = createSlice({
         disableLoader: (state: LoadingState) => {
             return {
                 ...state,
-                loading: true,
+                loading: false,
             };
         },
     },
