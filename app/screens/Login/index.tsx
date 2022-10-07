@@ -1,7 +1,6 @@
 import StdButton from 'app/components/StandardButton/index';
 import NavigationService from 'app/navigation/NavigationService';
-import * as loginActions from 'app/store/actions/loginActions';
-
+import { onLoginRequest } from 'app/store/slice/userSlice';
 import React, { useEffect, useState } from 'react';
 import {
     Animated,
@@ -13,29 +12,33 @@ import {
     Image,
     Alert,
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { useTheme, TextInput } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native-gesture-handler';
 import TextInputController from 'app/components/TextInputComponent';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
+
 const Login: React.FC = () => {
-    // const id = useSelector((state: RootState) => state.user.id);
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const styles = useStyle();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
     const onLogin = () => {
+        const payload = {
+            email: email,
+            password: password,
+        };
         if (email && password) {
-            dispatch(loginActions.requestLogin(email, password));
+            dispatch(onLoginRequest(payload));
         } else {
             Alert.alert('Please enter email and password');
         }
     };
-    const onForgot = () => NavigationService.navigate('ForgotPassword');
 
     return (
         <View style={styles.container}>
@@ -73,7 +76,7 @@ const Login: React.FC = () => {
                             placeholder="Email"
                             label="Email"
                             text={email}
-                            onChangeText={(email) => {
+                            onChangeText={(email: any) => {
                                 setEmail(email);
                             }}
                             style={styles.textInputController}
@@ -86,7 +89,14 @@ const Login: React.FC = () => {
                             placeholder="Password"
                             label="Password"
                             text={password}
-                            onChangeText={(password) => {
+                            secureTextEntry={passVisible}
+                            right={
+                                <TextInput.Icon
+                                    name={passVisible ? 'eye-off-outline' : 'eye-outline'}
+                                    onPress={() => setPassVisible(!passVisible)}
+                                />
+                            }
+                            onChangeText={(password: any) => {
                                 setPassword(password);
                             }}
                             style={styles.textInputController}

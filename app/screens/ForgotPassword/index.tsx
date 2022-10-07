@@ -1,7 +1,5 @@
 import StdButton from 'app/components/StandardButton/index';
 import NavigationService from 'app/navigation/NavigationService';
-import * as loginActions from 'app/store/actions/loginActions';
-
 import React, { useEffect, useState } from 'react';
 import {
     Animated,
@@ -11,54 +9,41 @@ import {
     View,
     ImageBackground,
     Image,
+    Alert,
 } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native-gesture-handler';
 import TextInputController from 'app/components/TextInputComponent';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
+import { onForgotRequest } from 'app/store/slice/forgotPassSlice';
+
 const ForgotPassword: React.FC = () => {
-    // const id = useSelector((state: RootState) => state.user.id);
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const styles = useStyle();
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const theme = useTheme();
-    const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-    const onForgot = () => NavigationService.navigate('ForgotPassword');
-    // const rotation = new Animated.Value(0);
-    // const rotationValue = rotation.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: ['0deg', '360deg'],
-    // });
-    // const opacityValue = new Animated.Value(0);
+    const forgotData = useSelector((state) => state.forgot);
 
-    // useEffect(() => {
-    //     Animated.timing(rotation, {
-    //         toValue: 1,
-    //         duration: 5000,
-    //         easing: Easing.bounce,
-
-    //         useNativeDriver: true,
-    //     }).start();
-
-    //     setTimeout(() => {
-    //         Animated.spring(opacityValue, {
-    //             toValue: 1,
-    //             stiffness: 20,
-    //             useNativeDriver: true,
-    //         }).start();
-    //     }, 5000);
-    // }, []);
-
+    const onForgotPassword = () => {
+        const payload = { email: email };
+        if (email) {
+            dispatch(onForgotRequest(payload));
+            Alert.alert('Alert', forgotData.message, [
+                { text: 'OK', onPress: () => NavigationService.goBack() },
+            ]);
+        } else {
+            Alert.alert('Please enter email');
+        }
+    };
     return (
         <View style={styles.container}>
             <ImageBackground
                 source={require('../../assets/images/repair.png')}
-                style={{ flex: 1, width: '100%', height: '100%', opacity:0.8 }}
+                style={{ flex: 1, width: '100%', height: '100%', opacity: 0.8 }}
                 resizeMode={'cover'}>
                 <View
                     style={{
@@ -81,7 +66,7 @@ const ForgotPassword: React.FC = () => {
                             placeholder="Email"
                             label="Email"
                             text={email}
-                            onChangeText={(email) => {
+                            onChangeText={(email: any) => {
                                 setEmail(email);
                             }}
                             style={styles.textInputController}
@@ -90,14 +75,8 @@ const ForgotPassword: React.FC = () => {
                     </View>
 
                     <View style={styles.subContainer}>
-                        {/* <StdButton
-                    title={t('Login')}
-                    onPress={() => console.log('Login')}
-                    //onPress={onLogin}
-                    icon="login"
-                    iconColor={theme.colors.background === 'white' ? 'white' : 'black'}
-                /> */}
                         <TouchableOpacity
+                            onPress={() => onForgotPassword()}
                             style={{
                                 width: '85%',
                                 backgroundColor: 'grey',

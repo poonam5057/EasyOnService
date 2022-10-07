@@ -3,13 +3,17 @@
  */
 import loadingSlice from './loadingSlice';
 import userSlice from './userSlice';
+import registerSlice from './registerSlice';
 import themeSlice from './themeSlice';
+import forgotPassSlice from './forgotPassSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 
 const reducers = {
     loading: loadingSlice,
     theme: themeSlice,
     user: userSlice,
+    register: registerSlice,
+    forgot: forgotPassSlice,
 };
 
 // Exports

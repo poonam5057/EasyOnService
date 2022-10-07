@@ -78,6 +78,24 @@ const Drawer: React.FC = (props) => {
                 <DrawerItem
                     icon={({ size }) => (
                         <MaterialCommunityIcons
+                            name="lock"
+                            color={theme.colors.primary}
+                            size={size}
+                        />
+                    )}
+                    label={t('Change Password')}
+                    activeTintColor="#2196f3"
+                    activeBackgroundColor="rgba(0, 0, 0, .04)"
+                    inactiveTintColor="rgba(0, 0, 0, .87)"
+                    inactiveBackgroundColor="transparent"
+                    labelStyle={{ color: theme.colors.primary }}
+                    onPress={() => {
+                        navigation.navigate('Change Password' as never);
+                    }}
+                />
+                <DrawerItem
+                    icon={({ size }) => (
+                        <MaterialCommunityIcons
                             name="chat-outline"
                             color={theme.colors.primary}
                             size={size}

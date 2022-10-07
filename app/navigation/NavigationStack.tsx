@@ -10,6 +10,7 @@ import { RootState } from 'app/store/slice/';
 import ThemeController from '../components/ThemeController';
 import { navigationRef } from './NavigationService';
 import BottomTabNavigation from './BottomTabNavigation';
+import ChangePassword from 'app/screens/ChangePassword';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -91,6 +92,20 @@ const LoggedInNavigator = () => {
             <AppDrawer.Screen
                 name={t('Home')}
                 component={BottomTabNavigation}
+                options={{
+                    drawerLabel: 'Gsoft Boiler Plate',
+                    headerStyle: {
+                        backgroundColor: theme.colors.accent, //Set Header color
+                    },
+                    headerTintColor: theme.colors.primary, //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                }}
+            />
+            <AppDrawer.Screen
+                name={t('Change Password')}
+                component={ChangePassword}
                 options={{
                     drawerLabel: 'Gsoft Boiler Plate',
                     headerStyle: {

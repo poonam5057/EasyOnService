@@ -4,6 +4,7 @@ import sagas from 'app/store/sagas';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
+
 const config = {
     key: 'root',
     storage: AsyncStorage,

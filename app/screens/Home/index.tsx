@@ -43,11 +43,11 @@ const Home: React.FC = () => {
             image: 'https://t4.ftcdn.net/jpg/03/34/40/47/360_F_334404760_f3yl8HLHQ2WEQwBeAtaRh6rIb5Tsi8LD.jpg',
         },
         {
-            id: 1,
+            id: 2,
             image: 'https://media.istockphoto.com/photos/laptop-and-a-cup-of-coffee-on-office-desk-picture-id183263571?k=20&m=183263571&s=612x612&w=0&h=m8xTb2dT0NvQ4e0HZV128Gs5OPd4N_PSzIC14QCjkK8=',
         },
         {
-            id: 1,
+            id: 3,
             image: 'https://wp.inews.co.uk/wp-content/uploads/2016/11/shutterstock_107197562.jpg?resize=640,360&strip=all&quality=90',
         },
     ]);

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Home from '../screens/Home';
 import Chat from '../screens/Chat';
 import Profile from '../screens/Profile';
+import ChangePassword from '../screens/ChangePassword';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -63,6 +64,18 @@ const BottomTabNavigation = () => {
                     headerStyle: { backgroundColor: theme.colors.primary },
                 }}
             />
+            {/* <Tab.Screen
+                name="Change Password"
+                component={ChangePassword}
+                options={{
+                    tabBarLabel: 'ChangePassword',
+                    headerShown: false,
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="person-circle-outline" color={color} size={size} />
+                    ),
+                    headerStyle: { backgroundColor: theme.colors.primary },
+                }}
+            /> */}
         </Tab.Navigator>
     );
 };

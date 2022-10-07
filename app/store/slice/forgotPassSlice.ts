@@ -2,45 +2,42 @@
  * handles login states in the app
  */
 import { createSlice } from '@reduxjs/toolkit';
-interface LoginState {
+interface ForgotState {
     isLoggedIn: boolean;
     data: any;
     error: any;
 }
-const initialState: LoginState = {
+const initialState: ForgotState = {
     isLoggedIn: false,
     data: null,
     error: null,
 };
 
-const loginSlice = createSlice({
-    name: 'user',
+const forgotPassSlice = createSlice({
+    name: 'forgot',
     initialState,
     reducers: {
-        onLoginRequest: (state, action) => {
+        onForgotRequest: (state, action) => {
             return {
                 ...state,
             };
         },
-        onLogin: (state, action) => {
+        onForgot: (state, action) => {
             return {
                 ...state,
                 isLoggedIn: true,
                 ...action.payload,
             };
         },
-        onLoginFailed: (state, action) => {
+        onForgotFailed: (state, action) => {
             return {
                 ...state,
                 isLoggedIn: false,
                 error: action.payload,
             };
         },
-        logOut: () => {
-            return initialState;
-        },
     },
 });
 
-export const { onLogin, logOut, onLoginFailed, onLoginRequest } = loginSlice.actions;
-export default loginSlice.reducer;
+export const { onForgotRequest, onForgot, onForgotFailed } = forgotPassSlice.actions;
+export default forgotPassSlice.reducer;

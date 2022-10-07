@@ -1,6 +1,5 @@
 import StdButton from 'app/components/StandardButton/index';
 import NavigationService from 'app/navigation/NavigationService';
-import * as loginActions from 'app/store/actions/loginActions';
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -12,13 +11,17 @@ import {
     ImageBackground,
     Image,
     ScrollView,
+    Alert,
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
+import { useTheme, TextInput } from 'react-native-paper';
+import { useDispatch, useSelector } from 'react-redux';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 import TextInputController from 'app/components/TextInputComponent';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
+import * as registerActions from 'app/store/actions/registerActions';
+import { onRegisterRemove } from 'app/store/slice/registerSlice';
+import { onRegisterRequest } from 'app/store/slice/registerSlice';
 const Register: React.FC = () => {
     // const id = useSelector((state: RootState) => state.user.id);
     const { t } = useTranslation();
@@ -27,13 +30,38 @@ const Register: React.FC = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [phone, setPhone] = useState('');
-    const [age, setAge] = useState('');
+    const [phone, setPhone] = useState(0);
+    const [age, setAge] = useState(0);
     const [address, setAddress] = useState('');
+    const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
-    const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-    const onForgot = () => NavigationService.navigate('ForgotPassword');
+    const userRegData = useSelector((state) => state?.register?.message);
 
+    useEffect(() => {
+        if (userRegData) {
+            //dispatch(onRegisterRemove)
+            // NavigationService.goBack();
+            //dispatch(onRegisterRemove());
+            //Alert.alert('Register Success', userRegData);
+        }
+    }, [userRegData]);
+
+    const onRegisterData = () => {
+        const payload = {
+            name: name,
+            email: email,
+            password: password,
+            phonenumber: parseInt(phone),
+            age: parseInt(age),
+            address: address,
+        };
+        if (name && email && password && phone && age && address) {
+            // dispatch(registerActions.requestRegister(name, email, password, phone, age, address));
+            dispatch(onRegisterRequest(payload));
+        } else {
+            Alert.alert('Please fill all data');
+        }
+    };
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -70,8 +98,8 @@ const Register: React.FC = () => {
                                 placeholder="Name"
                                 label="Name"
                                 text={name}
-                                onChangeText={(name) => {
-                                    setEmail(name);
+                                onChangeText={(name: any) => {
+                                    setName(name);
                                 }}
                                 style={styles.textInputController}
                                 activeUnderlineColor={COLORS.subTitle}
@@ -83,7 +111,7 @@ const Register: React.FC = () => {
                                 placeholder="Email"
                                 label="Email"
                                 text={email}
-                                onChangeText={(email) => {
+                                onChangeText={(email: any) => {
                                     setEmail(email);
                                 }}
                                 style={styles.textInputController}
@@ -96,7 +124,14 @@ const Register: React.FC = () => {
                                 placeholder="Password"
                                 label="Password"
                                 text={password}
-                                onChangeText={(password) => {
+                                secureTextEntry={passVisible}
+                                right={
+                                    <TextInput.Icon
+                                        name={passVisible ? 'eye-off-outline' : 'eye-outline'}
+                                        onPress={() => setPassVisible(!passVisible)}
+                                    />
+                                }
+                                onChangeText={(password: any) => {
                                     setPassword(password);
                                 }}
                                 style={styles.textInputController}
@@ -109,7 +144,7 @@ const Register: React.FC = () => {
                                 placeholder="Phone"
                                 label="Phone"
                                 text={phone}
-                                onChangeText={(phone) => {
+                                onChangeText={(phone: number) => {
                                     setPhone(phone);
                                 }}
                                 style={styles.textInputController}
@@ -122,7 +157,7 @@ const Register: React.FC = () => {
                                 placeholder="Age"
                                 label="Age"
                                 text={age}
-                                onChangeText={(age) => {
+                                onChangeText={(age: number) => {
                                     setAge(age);
                                 }}
                                 style={styles.textInputController}
@@ -135,8 +170,8 @@ const Register: React.FC = () => {
                                 placeholder="Address"
                                 label="Address"
                                 text={address}
-                                onChangeText={(address) => {
-                                    setAge(address);
+                                onChangeText={(address: any) => {
+                                    setAddress(address);
                                 }}
                                 style={styles.textInputController}
                                 activeUnderlineColor={COLORS.subTitle}
@@ -144,7 +179,7 @@ const Register: React.FC = () => {
                         </View>
                         <View style={styles.subContainer}>
                             <TouchableOpacity
-                                onPress={() => console.log('Register')}
+                                onPress={() => onRegisterData()}
                                 style={{
                                     width: '85%',
                                     backgroundColor: 'grey',
