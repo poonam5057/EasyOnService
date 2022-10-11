@@ -93,7 +93,7 @@ const Drawer: React.FC = (props) => {
                         navigation.navigate('Change Password' as never);
                     }}
                 />
-                <DrawerItem
+                {/* <DrawerItem
                     icon={({ size }) => (
                         <MaterialCommunityIcons
                             name="chat-outline"
@@ -109,7 +109,7 @@ const Drawer: React.FC = (props) => {
                     activeTintColor="#2196f3"
                     inactiveTintColor="white"
                     inactiveBackgroundColor="transparent"
-                />
+                /> */}
 
                 {/* <View style={styles.preference}>
                     <Text style={styles.text}>{t('Theme')} </Text>

@@ -3,14 +3,14 @@ import { Text, View } from 'react-native';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 
-const Chat: React.FC = () => {
+const Booking: React.FC = () => {
     const styles = useStyle();
     const { t } = useTranslation();
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{t('Hello! Im Chat screen')}</Text>
+            <Text style={styles.title}>{t('Hello! Im Booking screen')}</Text>
         </View>
     );
 };
 
-export default Chat;
+export default Booking;

@@ -28,6 +28,7 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
+    
     const onLogin = () => {
         const payload = {
             email: email,
@@ -56,7 +57,7 @@ const Login: React.FC = () => {
                         // marginTop: 100,
                         borderRadius: 10,
                         paddingVertical: 15,
-                        marginTop: width / 2.2,
+                        marginTop: width / 4,
                     }}>
                     <View>
                         <Image

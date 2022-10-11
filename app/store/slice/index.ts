@@ -6,6 +6,10 @@ import userSlice from './userSlice';
 import registerSlice from './registerSlice';
 import themeSlice from './themeSlice';
 import forgotPassSlice from './forgotPassSlice';
+import changePassSlice from './changePassSlice';
+import bannerGetSlice from './bannerGetSlice';
+import serviceGetSlice from './serviceGetSlice';
+import productGetSlice from './productGetSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 
 const reducers = {
@@ -14,6 +18,10 @@ const reducers = {
     user: userSlice,
     register: registerSlice,
     forgot: forgotPassSlice,
+    change: changePassSlice,
+    banner: bannerGetSlice,
+    service: serviceGetSlice,
+    product: productGetSlice,
 };
 
 // Exports

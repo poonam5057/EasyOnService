@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import { RootState } from 'app/store/slice';
 import { useTheme } from 'react-native-paper';
 import React from 'react';
-import { RootState } from 'app/store/slice';
 import { useSelector } from 'react-redux';
-import { COLORS, SIZES, width, height } from '../../utils/constants';
+import { COLORS, SIZES, height, width } from '../../utils/constants';
 
 export const useStyle = () => {
     const { colors } = useTheme();
@@ -13,17 +13,8 @@ export const useStyle = () => {
         StyleSheet.create({
             container: {
                 flex: 1,
-                backgroundColor: 'white',
-            },
-            textInputView: {
-                padding: 5,
-                margin: 5,
-                marginHorizontal: 20,
-                marginTop: 10,
-            },
-            textInputController: {
-                overflow: 'hidden',
-                color: 'white',
+                // alignItems: 'center',
+                // justifyContent: 'center',
                 backgroundColor: 'white',
             },
         });

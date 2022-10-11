@@ -35,16 +35,7 @@ const Register: React.FC = () => {
     const [address, setAddress] = useState('');
     const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
-    const userRegData = useSelector((state) => state?.register?.message);
-
-    useEffect(() => {
-        if (userRegData) {
-            //dispatch(onRegisterRemove)
-            // NavigationService.goBack();
-            //dispatch(onRegisterRemove());
-            //Alert.alert('Register Success', userRegData);
-        }
-    }, [userRegData]);
+    const userRegData = useSelector((state) => state.register);
 
     const onRegisterData = () => {
         const payload = {
@@ -58,6 +49,9 @@ const Register: React.FC = () => {
         if (name && email && password && phone && age && address) {
             // dispatch(registerActions.requestRegister(name, email, password, phone, age, address));
             dispatch(onRegisterRequest(payload));
+            Alert.alert('Alert', userRegData.data.message, [
+                { text: 'OK', onPress: () => NavigationService.goBack() },
+            ]);
         } else {
             Alert.alert('Please fill all data');
         }

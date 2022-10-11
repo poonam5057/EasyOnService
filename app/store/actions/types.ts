@@ -3,4 +3,6 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 // export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const BANNER_GET = 'BANNER_GET';
 export const LOGOUT = 'LOGOUT';

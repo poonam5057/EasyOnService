@@ -1,59 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { Searchbar, Text } from 'react-native-paper';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
+import { onBannerRequest } from 'app/store/slice/bannerGetSlice';
+import { onServiceRequest } from 'app/store/slice/serviceGetSlice';
+import NavigationService from 'app/navigation/NavigationService';
 
 const Home: React.FC = () => {
     const styles = useStyle();
     const { t } = useTranslation();
+    const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
-    const [serviceData, setServiceData] = useState([
-        {
-            id: 1,
-            servicename: 'Ac Reparing',
-            image: require('../../assets/images/ac1.jpeg'),
-            status: 1,
-        },
-        {
-            id: 2,
-            servicename: 'Computer repairing',
-            image: require('../../assets/images/com.jpeg'),
-            status: 1,
-        },
-        {
-            id: 3,
-            servicename: 'Computer hardware',
-            image: require('../../assets/images/hard.jpeg'),
-            status: 1,
-        },
-        {
-            id: 4,
-            servicename: 'Computer parts',
-            image: require('../../assets/images/repair.png'),
-            status: 1,
-        },
-    ]);
+    // const [serviceData, setServiceData] = useState([
+    //     {
+    //         id: 1,
+    //         servicename: 'Ac Reparing',
+    //         image: require('../../assets/images/ac1.jpeg'),
+    //         status: 1,
+    //     },
+    //     {
+    //         id: 2,
+    //         servicename: 'Computer repairing',
+    //         image: require('../../assets/images/com.jpeg'),
+    //         status: 1,
+    //     },
+    //     {
+    //         id: 3,
+    //         servicename: 'Computer hardware',
+    //         image: require('../../assets/images/hard.jpeg'),
+    //         status: 1,
+    //     },
+    //     {
+    //         id: 4,
+    //         servicename: 'Computer parts',
+    //         image: require('../../assets/images/repair.png'),
+    //         status: 1,
+    //     },
+    // ]);
+    const [banner, setBanner] = useState([]);
+    const [service, setService] = useState([]);
+    const bannerData = useSelector((state: any) => state?.banner);
+    const serviceData = useSelector((state: any) => state?.service);
 
-    const [banner, setBanner] = useState([
-        {
-            id: 1,
-            image: 'https://t4.ftcdn.net/jpg/03/34/40/47/360_F_334404760_f3yl8HLHQ2WEQwBeAtaRh6rIb5Tsi8LD.jpg',
-        },
-        {
-            id: 2,
-            image: 'https://media.istockphoto.com/photos/laptop-and-a-cup-of-coffee-on-office-desk-picture-id183263571?k=20&m=183263571&s=612x612&w=0&h=m8xTb2dT0NvQ4e0HZV128Gs5OPd4N_PSzIC14QCjkK8=',
-        },
-        {
-            id: 3,
-            image: 'https://wp.inews.co.uk/wp-content/uploads/2016/11/shutterstock_107197562.jpg?resize=640,360&strip=all&quality=90',
-        },
-    ]);
+    useEffect(() => {
+        dispatch(onBannerRequest());
+        dispatch(onServiceRequest());
+    }, []);
+
+    useEffect(() => {
+        if (bannerData) {
+            setBanner(bannerData.data?.BannerData);
+        }
+    }, [bannerData]);
+
+    useEffect(() => {
+        if (serviceData) {
+            setService(serviceData?.data?.serviceData);
+        }
+    }, [serviceData]);
+
     return (
         <View style={styles.container}>
-            <ScrollView style={{ marginBottom:85}}>
+            <ScrollView style={{ marginBottom: 85 }}>
                 <Searchbar
                     placeholder="Search"
                     onChangeText={(searchQuery) => setSearchQuery(searchQuery)}
@@ -61,7 +73,7 @@ const Home: React.FC = () => {
                     style={{ marginTop: 10, marginHorizontal: 15, borderRadius: 10 }}
                 />
                 <AppIntroSlider
-                    data={banner}
+                    data={banner || []}
                     renderItem={({ item }) => {
                         return (
                             <View style={styles.appIntroSliderContainer}>
@@ -70,6 +82,20 @@ const Home: React.FC = () => {
                                     resizeMode={'cover'}
                                     style={styles.imageStyle}
                                 />
+                                <Text
+                                    style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        textAlign: 'center',
+                                        left: 0,
+                                        right: 0,
+                                        marginTop: 20,
+                                        fontSize: 20,
+                                        fontWeight: 'bold',
+                                        color: COLORS.primary,
+                                    }}>
+                                    {item.imageName}
+                                </Text>
                             </View>
                         );
                     }}
@@ -84,24 +110,29 @@ const Home: React.FC = () => {
                     Services
                 </Text>
                 <View style={styles.productMainContainer}>
-                    {serviceData.map((item: any) => {
-                        return (
-                            <View key={item.id} style={styles.productFlatListContainer}>
-                                <TouchableOpacity
-                                    activeOpacity={1}
-                                    onPress={() => console.log('first')}>
-                                    <Image
-                                        source={item.image}
-                                        style={styles.imageFlatlistStyle}
-                                        resizeMode={'cover'}
-                                    />
-                                    <View style={{ marginTop: 10, marginHorizontal: 5 }}>
-                                        <Text style={styles.productTitle}>{item.servicename}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        );
-                    })}
+                    {console.log('object', service)}
+                    {!!service &&
+                        service.map((item: any) => {
+                            console.log('service ::', item.image);
+                            return (
+                                <View key={item.id} style={styles.productFlatListContainer}>
+                                    <TouchableOpacity
+                                        activeOpacity={1}
+                                        onPress={() => NavigationService.navigate('Product')}>
+                                        <Image
+                                            source={{ uri: item.image }}
+                                            style={styles.imageFlatlistStyle}
+                                            resizeMode={'cover'}
+                                        />
+                                        <View style={{ marginTop: 10, marginHorizontal: 5 }}>
+                                            <Text style={styles.productTitle}>
+                                                {item.servicename}
+                                            </Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            );
+                        })}
                 </View>
             </ScrollView>
         </View>

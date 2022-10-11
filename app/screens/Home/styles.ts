@@ -32,6 +32,10 @@ export const useStyle = () => {
                 width: '45%',
                 marginHorizontal: 5,
                 padding: 5,
+                margin: 5,
+                borderRadius:10,
+                borderWidth:1,
+                borderColor:'grey'
             },
             imageFlatlistStyle: {
                 width: 160,

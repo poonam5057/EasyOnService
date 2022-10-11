@@ -11,18 +11,19 @@ export default function* registerAsync(action: any): any {
             action.payload.name,
             action.payload.email,
             action.payload.password,
-            action.payload.phone,
+            action.payload.phonenumber,
             action.payload.age,
             action.payload.address,
         );
         if (response.status === 200) {
             yield put(onRegister(response.data));
+           // Alert.alert('Register success.', response.data.message);
         } else {
             yield put(onRegisterFailed(response.data));
             Alert.alert('Register Failed.', response.data.message);
         }
     } catch (error) {
-        Alert.alert('Register Failed.', error?.response.data.message);
+        Alert.alert('Register Failed :::', error?.response.data.message);
         yield put(onRegisterFailed(error?.response?.data));
     }
 }

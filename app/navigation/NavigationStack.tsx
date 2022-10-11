@@ -93,7 +93,6 @@ const LoggedInNavigator = () => {
                 name={t('Home')}
                 component={BottomTabNavigation}
                 options={{
-                    drawerLabel: 'Gsoft Boiler Plate',
                     headerStyle: {
                         backgroundColor: theme.colors.accent, //Set Header color
                     },
