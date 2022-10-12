@@ -9,14 +9,16 @@ import forgotPassSaga from './forgotPassSaga';
 import changePassSaga from './changePassSaga';
 import bannerGetSaga from './bannerGetSaga';
 import serviceGetSaga from './serviceGetSaga';
-import productGetSaga from './productGetSaga';
+import categoryGetSaga from './categoryGetSaga';
+import singleCategoryGetSaga from './singleCategorySaga';
 import { onLoginRequest } from '../slice/userSlice';
 import { onRegisterRequest } from '../slice/registerSlice';
 import { onForgotRequest } from '../slice/forgotPassSlice';
 import { onChangePassRequest } from '../slice/changePassSlice';
 import { onBannerRequest } from '../slice/bannerGetSlice';
 import { onServiceRequest } from '../slice/serviceGetSlice';
-import { onProductRequest } from '../slice/productGetSlice';
+import { onCategoryRequest } from '../slice/categoryGetSlice';
+import { onSingleCategoryRequest } from '../slice/singleCategorySlice';
 
 export default function* watch() {
     yield all([takeEvery(onLoginRequest, loginSaga)]);
@@ -25,5 +27,6 @@ export default function* watch() {
     yield all([takeEvery(onChangePassRequest, changePassSaga)]);
     yield all([takeEvery(onBannerRequest, bannerGetSaga)]);
     yield all([takeEvery(onServiceRequest, serviceGetSaga)]);
-    yield all([takeEvery(onProductRequest, productGetSaga)]);
+    yield all([takeEvery(onCategoryRequest, categoryGetSaga)]);
+    yield all([takeEvery(onSingleCategoryRequest, singleCategoryGetSaga)]);
 }

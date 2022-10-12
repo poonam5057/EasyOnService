@@ -110,15 +110,15 @@ const Home: React.FC = () => {
                     Services
                 </Text>
                 <View style={styles.productMainContainer}>
-                    {console.log('object', service)}
                     {!!service &&
                         service.map((item: any) => {
-                            console.log('service ::', item.image);
                             return (
                                 <View key={item.id} style={styles.productFlatListContainer}>
                                     <TouchableOpacity
                                         activeOpacity={1}
-                                        onPress={() => NavigationService.navigate('Product')}>
+                                        onPress={() =>
+                                            NavigationService.navigate('Category', { Item: item })
+                                        }>
                                         <Image
                                             source={{ uri: item.image }}
                                             style={styles.imageFlatlistStyle}

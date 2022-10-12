@@ -11,20 +11,27 @@ import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-// import i18n from "../../components/Languages/i18n";
+import { onLogOutRequest } from 'app/store/slice/userSlice';
+
 const Drawer: React.FC = (props) => {
     const [checked, setChecked] = React.useState('first');
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-    const onLogout = () => dispatch(loginActions.logOut());
+     
     const theme = useTheme();
     const styles = useStyle();
     const navigation = useNavigation();
+
     useEffect(() => {
         if (i18n.language === 'en') setChecked('first');
         else if (i18n.language === 'es') setChecked('second');
         else if (i18n.language === 'de') setChecked('third');
     }, []);
+
+    const onLogout = () => {
+        dispatch(onLogOutRequest());
+    };
+
     return (
         <View style={styles.drawerContent}>
             <DrawerContentScrollView {...props}>
@@ -203,6 +210,7 @@ const Drawer: React.FC = (props) => {
                     )}
                     onPress={() => {
                         onLogout();
+                        // console.log('logout');
                     }}
                     label={t('Logout')}
                     activeTintColor="#2196f3"

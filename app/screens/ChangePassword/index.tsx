@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { useStyle } from './styles';
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { COLORS, width, height, FontSize } from 'app/utils/constants';
 import TextInputController from 'app/components/TextInputComponent';
 import { onChangePassRequest } from 'app/store/slice/changePassSlice';
-
+import { AsyncStorage } from 'react-native';
 interface Props {}
 
 const ChangePassword: React.FC<Props> = (props) => {
@@ -18,6 +18,8 @@ const ChangePassword: React.FC<Props> = (props) => {
     const [currentPassVisible, setCurrentPassVisible] = useState(true);
     const [newPassVisible, setNewPassVisible] = useState(true);
     const [confirmPassVisible, setConfirmPassVisible] = useState(true);
+
+    const loginData = useSelector((state) => state?.user?.data?.token);
 
     const onChangePassword = () => {
         const payload = {
@@ -31,6 +33,14 @@ const ChangePassword: React.FC<Props> = (props) => {
             Alert.alert('Please Fill Data');
         }
     };
+
+    useEffect(() => {
+        (async () => {
+            const token = await AsyncStorage.setItem('token', loginData);
+           // console.log('token set', token);
+        })();
+    }, []);
+
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, marginTop: 20 }}>

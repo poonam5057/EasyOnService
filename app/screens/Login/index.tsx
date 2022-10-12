@@ -13,7 +13,7 @@ import {
     Alert,
 } from 'react-native';
 import { useTheme, TextInput } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useStyle } from './styles';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -27,8 +27,9 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passVisible, setPassVisible] = useState(true);
+
     const theme = useTheme();
-    
+
     const onLogin = () => {
         const payload = {
             email: email,

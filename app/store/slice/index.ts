@@ -9,7 +9,9 @@ import forgotPassSlice from './forgotPassSlice';
 import changePassSlice from './changePassSlice';
 import bannerGetSlice from './bannerGetSlice';
 import serviceGetSlice from './serviceGetSlice';
-import productGetSlice from './productGetSlice';
+import categoryGetSlice from './categoryGetSlice';
+import singleCategorySlice from './singleCategorySlice';
+
 import { combineReducers } from '@reduxjs/toolkit';
 
 const reducers = {
@@ -21,7 +23,8 @@ const reducers = {
     change: changePassSlice,
     banner: bannerGetSlice,
     service: serviceGetSlice,
-    product: productGetSlice,
+    category: categoryGetSlice,
+    singleCategory: singleCategorySlice,
 };
 
 // Exports

@@ -9,7 +9,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'react-native-paper';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Product from 'app/screens/Product';
+import Category from 'app/screens/Category';
+import singleCategory from 'app/screens/singleCategory';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -24,7 +25,8 @@ const StackNavigation = () => {
                     headerShown: false,
                 }}
             />
-            <Stack.Screen name="Product" component={Product} />
+            <Stack.Screen name="Category" component={Category} />
+            <Stack.Screen name="SingleCategory" component={singleCategory} />
         </Stack.Navigator>
     );
 };

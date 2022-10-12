@@ -1,32 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
-interface ProductState {
+interface CategoryState {
     data: any;
     error: any;
 }
-const initialState: ProductState = {
+const initialState: CategoryState = {
     data: null,
     error: null,
 };
 
-const ProductGetSlice = createSlice({
-    name: 'product',
+const CategoryGetSlice = createSlice({
+    name: 'category',
     initialState,
     reducers: {
-        onProductRequest: () => {
-            // console.log('state .....', );
+        onCategoryRequest: () => {
             return {
                 data: null,
                 error: null,
             };
         },
-        onProduct: (state, action) => {
+        onCategory: (state, action) => {
             return {
                 ...state,
                 data: action.payload,
                 error: null,
             };
         },
-        onProductFailed: (state, action) => {
+        onCategoryFailed: (state, action) => {
             return {
                 ...state,
                 data: null,
@@ -36,5 +35,5 @@ const ProductGetSlice = createSlice({
     },
 });
 
-export const { onProductRequest, onProduct, onProductFailed } = ProductGetSlice.actions;
-export default ProductGetSlice.reducer;
+export const { onCategoryRequest, onCategory, onCategoryFailed } = CategoryGetSlice.actions;
+export default CategoryGetSlice.reducer;

@@ -36,11 +36,11 @@ const loginSlice = createSlice({
                 error: action.payload,
             };
         },
-        logOut: () => {
+        onLogOutRequest: () => {
             return initialState;
         },
     },
 });
 
-export const { onLogin, logOut, onLoginFailed, onLoginRequest } = loginSlice.actions;
+export const { onLogin, onLogOutRequest, onLoginFailed, onLoginRequest } = loginSlice.actions;
 export default loginSlice.reducer;
