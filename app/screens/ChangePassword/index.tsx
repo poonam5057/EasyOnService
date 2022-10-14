@@ -7,6 +7,8 @@ import { COLORS, width, height, FontSize } from 'app/utils/constants';
 import TextInputController from 'app/components/TextInputComponent';
 import { onChangePassRequest } from 'app/store/slice/changePassSlice';
 import { AsyncStorage } from 'react-native';
+import { onLogOutRequest } from 'app/store/slice/userSlice';
+
 interface Props {}
 
 const ChangePassword: React.FC<Props> = (props) => {
@@ -20,7 +22,9 @@ const ChangePassword: React.FC<Props> = (props) => {
     const [confirmPassVisible, setConfirmPassVisible] = useState(true);
 
     const loginData = useSelector((state) => state?.user?.data?.token);
+    const changeData = useSelector((state) => state?.change?.message);
 
+    // console.log('loginData', loginData);
     const onChangePassword = () => {
         const payload = {
             currentPassword,
@@ -29,6 +33,9 @@ const ChangePassword: React.FC<Props> = (props) => {
         };
         if (currentPassword && newPassword && confirmPassword) {
             dispatch(onChangePassRequest(payload));
+            Alert.alert('Alert', changeData, [
+                { text: 'OK', onPress: () => dispatch(onLogOutRequest()) },
+            ]);
         } else {
             Alert.alert('Please Fill Data');
         }
@@ -36,8 +43,7 @@ const ChangePassword: React.FC<Props> = (props) => {
 
     useEffect(() => {
         (async () => {
-            const token = await AsyncStorage.setItem('token', loginData);
-           // console.log('token set', token);
+            const token = await AsyncStorage.setItem('access_token', loginData);
         })();
     }, []);
 

@@ -11,6 +11,7 @@ import bannerGetSlice from './bannerGetSlice';
 import serviceGetSlice from './serviceGetSlice';
 import categoryGetSlice from './categoryGetSlice';
 import singleCategorySlice from './singleCategorySlice';
+import bestOfferGetSlice from './bestOfferGetSlice';
 
 import { combineReducers } from '@reduxjs/toolkit';
 
@@ -25,6 +26,7 @@ const reducers = {
     service: serviceGetSlice,
     category: categoryGetSlice,
     singleCategory: singleCategorySlice,
+    bestOffer: bestOfferGetSlice,
 };
 
 // Exports
