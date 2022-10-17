@@ -12,6 +12,7 @@ import serviceGetSlice from './serviceGetSlice';
 import categoryGetSlice from './categoryGetSlice';
 import singleCategorySlice from './singleCategorySlice';
 import bestOfferGetSlice from './bestOfferGetSlice';
+import profileGetSlice from './profileGetSlice';
 
 import { combineReducers } from '@reduxjs/toolkit';
 
@@ -27,6 +28,7 @@ const reducers = {
     category: categoryGetSlice,
     singleCategory: singleCategorySlice,
     bestOffer: bestOfferGetSlice,
+    profile: profileGetSlice,
 };
 
 // Exports
