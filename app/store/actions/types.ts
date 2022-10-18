@@ -6,3 +6,5 @@ export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const BANNER_GET = 'BANNER_GET';
 export const LOGOUT = 'LOGOUT';
+export const PROJECT_ESTIMATE = 'PROJECT_ESTIMATE';
+

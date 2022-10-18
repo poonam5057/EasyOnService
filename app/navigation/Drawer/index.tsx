@@ -3,6 +3,7 @@ import { View, TouchableOpacity, I18nManager } from 'react-native';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import { Avatar, Title, Text, List, RadioButton } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ThemeController from '../../components/ThemeController';
 import { useDispatch } from 'react-redux';
 import RNRestart from 'react-native-restart';
@@ -98,6 +99,24 @@ const Drawer: React.FC = (props) => {
                     labelStyle={{ color: theme.colors.primary }}
                     onPress={() => {
                         navigation.navigate('Change Password' as never);
+                    }}
+                />
+                <DrawerItem
+                    icon={({ size }) => (
+                        <FontAwesome5
+                            name="project-diagram"
+                            color={theme.colors.primary}
+                            size={size}
+                        />
+                    )}
+                    label={t('Project Estimation')}
+                    activeTintColor="#2196f3"
+                    activeBackgroundColor="rgba(0, 0, 0, .04)"
+                    inactiveTintColor="rgba(0, 0, 0, .87)"
+                    inactiveBackgroundColor="transparent"
+                    labelStyle={{ color: theme.colors.primary }}
+                    onPress={() => {
+                        navigation.navigate('Project Estimation' as never);
                     }}
                 />
                 {/* <DrawerItem
