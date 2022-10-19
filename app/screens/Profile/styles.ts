@@ -8,7 +8,8 @@ export const useStyle = () => {
     const styles = () =>
         StyleSheet.create({
             container: {
-                flex: 2,
+                flex: 1,
+                backgroundColor:'white'
             },
             subContainer: {
                 marginTop: '5%',

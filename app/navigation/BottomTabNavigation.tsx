@@ -39,13 +39,13 @@ const BottomTabNavigation = () => {
                 tabBarActiveTintColor: '#e91e63',
                 tabBarStyle: {
                     backgroundColor: theme.colors.accent,
-                    borderRadius: 20,
-                    position: 'absolute',
-                    margin: 10,
-                    marginBottom: 10,
-                    alignItems: 'center',
-                    height: 70,
-                    justifyContent: 'center',
+                    //borderRadius: 20,
+                    //  position: 'absolute',
+                    //  margin: 10,
+                    //  marginBottom: 10,
+                    //alignItems: 'center',
+                    //height: 70,
+                    //justifyContent: 'center',
                 },
             }}>
             <Tab.Screen

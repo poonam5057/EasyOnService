@@ -18,7 +18,6 @@ const Drawer: React.FC = (props) => {
     const [checked, setChecked] = React.useState('first');
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-     
     const theme = useTheme();
     const styles = useStyle();
     const navigation = useNavigation();
