@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { COLORS, width, height, FontSize } from 'app/utils/constants';
 import { ScrollView } from 'react-native-gesture-handler';
 import { onSubmitRequest } from 'app/store/slice/projectEstimateSlice';
 import TextInputController from 'app/components/TextInputComponent';
+
 
 interface Props {}
 
@@ -46,6 +47,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                         }}
                         style={{ overflow: 'hidden', color: 'white', backgroundColor: 'white' }}
                         activeUnderlineColor={COLORS.subTitle}
+                        left={<TextInput.Icon name="account" />}
                     />
                 </View>
                 <View style={{ margin: 10, padding: 5 }}>
@@ -59,6 +61,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                         }}
                         style={{ overflow: 'hidden', color: 'white', backgroundColor: 'white' }}
                         activeUnderlineColor={COLORS.subTitle}
+                        left={<TextInput.Icon name="google-maps" />}
                     />
                 </View>
                 <View style={{ margin: 10, padding: 5 }}>
@@ -72,6 +75,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                         }}
                         style={{ overflow: 'hidden', color: 'white', backgroundColor: 'white' }}
                         activeUnderlineColor={COLORS.subTitle}
+                        left={<TextInput.Icon name="email" />}
                     />
                 </View>
                 <View style={{ margin: 10, padding: 5 }}>
@@ -85,6 +89,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                         }}
                         style={{ overflow: 'hidden', color: 'white', backgroundColor: 'white' }}
                         activeUnderlineColor={COLORS.subTitle}
+                        left={<TextInput.Icon name="cellphone" />}
                     />
                 </View>
                 <View style={{ margin: 10, padding: 10 }}>
@@ -98,6 +103,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                         }}
                         style={{ overflow: 'hidden', color: 'white', backgroundColor: 'white' }}
                         activeUnderlineColor={COLORS.subTitle}
+                        left={<TextInput.Icon name="android-messages" />}
                     />
                 </View>
                 <View style={{ marginTop: '40%' }}>
@@ -120,7 +126,7 @@ const projectEstimate: React.FC<Props> = (props) => {
                                 textAlign: 'center',
                                 padding: 15,
                             }}>
-                           Submit
+                            Submit
                         </Text>
                     </TouchableOpacity>
                 </View>
