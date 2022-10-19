@@ -16,6 +16,7 @@ import { useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
 import Drawer from './Drawer';
+import projectEstimate from 'app/screens/projectEstimation';
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
 const AppDrawer = createDrawerNavigator();
@@ -105,6 +106,20 @@ const LoggedInNavigator = () => {
             <AppDrawer.Screen
                 name={t('Change Password')}
                 component={ChangePassword}
+                options={{
+                    drawerLabel: 'Gsoft Boiler Plate',
+                    headerStyle: {
+                        backgroundColor: theme.colors.accent, //Set Header color
+                    },
+                    headerTintColor: theme.colors.primary, //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                }}
+            />
+            <AppDrawer.Screen
+                name={t('Project Estimation')}
+                component={projectEstimate}
                 options={{
                     drawerLabel: 'Gsoft Boiler Plate',
                     headerStyle: {
