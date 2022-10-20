@@ -1,5 +1,5 @@
 import { apiClient, allApi } from 'app/services/client';
-
+import { service } from './apiConfig';
 export default function registerUser(
     name: string,
     email: string,
@@ -8,7 +8,7 @@ export default function registerUser(
     age: number,
     address: string,
 ) {
-    return apiClient.post(allApi.REGISTER, {
+    return service.post(allApi.REGISTER, {
         name: name,
         email: email,
         password: password,

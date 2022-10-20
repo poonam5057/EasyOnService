@@ -1,4 +1,5 @@
 import { apiClient, allApi } from 'app/services/client';
+import { service } from './apiConfig';
 export default function getServiceData() {
-    return apiClient.get(allApi.SERVICES);
+    return service.get(allApi.SERVICES);
 }

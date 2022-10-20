@@ -1,5 +1,5 @@
 import { apiClient, allApi } from 'app/services/client';
-
+import { service } from './apiConfig';
 export default function getSingleUserData(id: number) {
-    return apiClient.get(allApi.USER + id);
+    return service.get(allApi.USER + id);
 }

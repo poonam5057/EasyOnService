@@ -1,5 +1,5 @@
 import { apiClient, allApi } from 'app/services/client';
-
+import { service } from './apiConfig';
 export default function loginUser(username: string, password: string) {
-    return apiClient.post(allApi.LOGIN, { email: username, password: password });
+    return service.post(allApi.LOGIN, { email: username, password: password });
 }

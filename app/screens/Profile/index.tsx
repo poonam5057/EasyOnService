@@ -60,10 +60,11 @@ const Profile: React.FC = () => {
             phonenumber: phone,
             age: age,
             address: address,
+            id:userRegData.userId
         };
         if (name && email && phone && age && address) {
             dispatch(onProfileRequest(payload));
-            Alert.alert('Alert', ProfileData.data.message, [
+            Alert.alert('Alert', ProfileData.data?.message, [
                 { text: 'OK', onPress: () => NavigationService.goBack() },
             ]);
         } else {
@@ -81,7 +82,8 @@ const Profile: React.FC = () => {
                     }}>
                     <Image
                         source={{
-                            uri: 'https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png',
+                            uri:
+                                'https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png',
                         }}
                         style={{
                             width: 150,
