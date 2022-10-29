@@ -16,6 +16,8 @@ export const useStyle = () => {
                 // alignItems: 'center',
                 // justifyContent: 'center',
                // backgroundColor: 'white',
+               borderColor:COLORS.borderLineColor,
+            //    borde
             },
         });
     return React.useMemo(() => styles(), [isDark]);

@@ -7,7 +7,7 @@ import {TextInput} from 'react-native-paper';
 import styles from './styles';
 
 interface Props {
-  text?: string;
+  text?: string ;
   mode?: 'outlined' | 'flat';
   style?: any;
   placeholder?: string;

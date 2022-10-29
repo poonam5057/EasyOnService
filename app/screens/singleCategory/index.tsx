@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRoute } from '@react-navigation/native';
 import { onSingleCategoryRequest } from 'app/store/slice/singleCategorySlice';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface Props {}
 
@@ -29,43 +30,94 @@ const SingleCategory: React.FC<Props> = (props) => {
 
     return (
         <View style={styles.container}>
-            <View
-                style={{
-                    margin: 10,
-                    padding: 10,
-                    backgroundColor: 'white',
-                    marginHorizontal: 20,
-                    borderRadius: 10,
-                }}>
+            <ScrollView>
                 <Image
                     source={{ uri: single?.image }}
-                    style={{ width: '100%', height: height / 5 }}
-                    resizeMode={'contain'}
+                    style={{ width: width / 1, height: height / 3 }}
+                    resizeMode={'cover'}
                 />
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
-                    <Text style={{ marginLeft: 10, fontSize: 16 }}>{single?.categoriesName}</Text>
+                <View
+                    style={{
+                        margin: 10,
+                        padding: 10,
+                        backgroundColor: 'white',
+                        marginHorizontal: 30,
+                        borderRadius: 10,
+                        bottom: 35,
+                    }}>
+                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
+                        <Text style={{ marginLeft: 10, fontSize: 16 }}>
+                            {single?.categoriesName}
+                        </Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
+                        <Text style={{ marginLeft: 10, fontSize: 16 }}>{single?.price}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
+                        <Text style={{ marginLeft: 10, fontSize: 16 }}>{single?.description}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text
+                            style={{
+                                // marginHorizontal: 35,
+                                fontSize: 18,
+                                fontWeight: 'bold',
+                                // bottom: 30,
+                            }}>
+                            Professional Person
+                        </Text>
+                    </View>
+                    <View
+                        style={
+                            {
+                                /*  margin: 10,
+                        padding: 10,
+                        // backgroundColor: 'white',
+                        marginHorizontal: 30,
+                        // borderRadius: 10,
+                        // bottom: 30, */
+                            }
+                        }>
+                        <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                            <Text style={{ fontSize: 20, marginTop: 2 }}>•</Text>
+                            <Text style={{ fontSize: 16, marginTop: 6, marginLeft: 10 }}>
+                                {single?.professional?.professional}
+                            </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                            <Text style={{ fontSize: 20, marginTop: 2 }}>•</Text>
+                            <Text style={{ fontSize: 16, marginTop: 5, marginLeft: 10 }}>
+                                {single?.professional?.name}
+                            </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                            <Text style={{ fontSize: 20, marginTop: 2 }}>•</Text>
+                            <Text style={{ fontSize: 16, marginTop: 5, marginLeft: 10 }}>
+                                {single?.professional?.professional}
+                            </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                            <Text style={{ fontSize: 20, marginTop: 2 }}>•</Text>
+                            <Text style={{ fontSize: 16, marginTop: 5, marginLeft: 10 }}>
+                                {single?.professional?.phonenumber}
+                            </Text>
+                        </View>
+                    </View>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
-                    <Text style={{ marginLeft: 10, fontSize: 16 }}>{single?.price}</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ fontSize: 20, marginTop: -5 }}>•</Text>
-                    <Text style={{ marginLeft: 10, fontSize: 16 }}>{single?.description}</Text>
-                </View>
-            </View>
-            <Text style={{ marginHorizontal: 25, fontSize: 18, fontWeight: 'bold' }}>
+                {/*  <Text style={{ marginHorizontal: 35, fontSize: 18, fontWeight: 'bold',bottom:30 }}>
                 Professional Person
-            </Text>
-            <View
+            </Text> */}
+                {/* <View
                 style={{
                     margin: 10,
                     padding: 10,
                     backgroundColor: 'white',
-                    marginHorizontal: 20,
+                    marginHorizontal: 30,
                     borderRadius: 10,
-                    marginTop: 10,
+                    bottom: 30,
                 }}>
                 <Text style={{ fontSize: 16 }}>{single?.professional?.professional}</Text>
                 <Text style={{ fontSize: 16, marginTop: 5 }}>{single?.professional?.name}</Text>
@@ -73,7 +125,8 @@ const SingleCategory: React.FC<Props> = (props) => {
                     {single?.professional?.phonenumber}
                 </Text>
                 <Text style={{ fontSize: 16, marginTop: 5 }}>{single?.professional?.address}</Text>
-            </View>
+            </View> */}
+            </ScrollView>
         </View>
     );
 };

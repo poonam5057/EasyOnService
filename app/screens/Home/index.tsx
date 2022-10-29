@@ -81,7 +81,7 @@ const Home: React.FC = () => {
                                         fontWeight: 'bold',
                                         color: COLORS.primary,
                                     }}>
-                                    {item.imageName}
+                                    {/* {item.imageName} */}
                                 </Text>
                             </View>
                         );
@@ -138,8 +138,9 @@ const Home: React.FC = () => {
                                     borderColor: 'black',
                                     backgroundColor: 'white',
                                     borderRadius: 8,
+                                    height:210,
                                     width: Math.round(Dimensions.get('window').width - 30 * 0.8),
-                                    paddingBottom: 40,
+                                    // paddingBottom: 40,
                                     shadowColor: '#000',
                                     shadowOffset: {
                                         width: 0,
@@ -152,29 +153,34 @@ const Home: React.FC = () => {
                                 <Image
                                     source={{ uri: item.image }}
                                     style={{
-                                        width: Math.round(
+                                        /* width: Math.round(
                                             Math.round(Dimensions.get('window').width - 30 * 0.8),
-                                        ),
-                                        height: 300,
+                                        ), */
+                                        width:'100%',
+                                        height: 215,
+                                        bottom:2
                                     }}
                                     resizeMode={'contain'}
                                 />
                                 <Text
                                     style={{
-                                        color: '#222',
-                                        fontSize: 28,
+                                        color: 'white',
+                                        fontSize: 22,
                                         fontWeight: 'bold',
                                         paddingLeft: 20,
                                         paddingTop: 20,
+                                        bottom: 80,
+
                                     }}>
                                     {item.bestoffersName}
                                 </Text>
                                 <Text
                                     style={{
-                                        color: '#222',
+                                        color: 'white',
                                         fontSize: 18,
                                         paddingLeft: 20,
                                         paddingRight: 20,
+                                        bottom: 80
                                     }}>
                                     {item.description}
                                 </Text>

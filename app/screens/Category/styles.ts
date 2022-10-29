@@ -12,11 +12,14 @@ export const useStyle = () => {
     const styles = () =>
         StyleSheet.create({
             container: {
-                flex: 1,
-                // alignItems: 'center',
+                // flex: 1,
+                // flexDirection: 'row',
+                // flexWrap: 'wrap',
+                // // alignItems: 'center',
                 // justifyContent: 'center',
-                backgroundColor: 'white',
+                // backgroundColor: 'white',
             },
         });
     return React.useMemo(() => styles(), [isDark]);
 };
+// marginVertical:35,marginHorizontal:50

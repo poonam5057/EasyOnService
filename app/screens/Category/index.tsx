@@ -32,26 +32,50 @@ const Category: React.FC<Props> = (props) => {
                 data={category}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity
-                            onPress={() =>
-                                NavigationService.navigate('SingleCategory', { Item: item })
+                        <View
+                            style={
+                                {
+                                    /* flexDirection:'row' */
+                                }
+                            }>
+                            <TouchableOpacity
+                            activeOpacity={1
                             }
-                            style={{
-                                margin: 10,
-                                padding: 10,
-                                borderWidth: 1,
-                                borderColor: COLORS.borderLineColor,
-                                borderRadius: 10,
-                            }}>
-                            <Image
-                                source={{ uri: item.image }}
-                                style={{ width: '100%', height: 100 }}
-                                resizeMode={'contain'}
-                            />
-                            <Text style={{ marginTop: 10, fontSize: 16, fontWeight: 'bold' }}>
-                                {item.categoriesName}
-                            </Text>
-                        </TouchableOpacity>
+                                onPress={() =>
+                                    NavigationService.navigate('SingleCategory', { Item: item })
+                                }
+                                style={{
+                                    margin: 10,
+                                    padding: 10,
+                                    // borderWidth: 1,
+                                    // borderColor: COLORS.borderLineColor,
+                                    borderRadius: 10,
+                                    flexDirection: 'row',
+                                    backgroundColor: 'white',
+                                    marginHorizontal: 20,
+                                }}>
+                                <Image
+                                    source={{ uri: item.image }}
+                                    style={{
+                                        width: width / 5,
+                                        height: width / 5,
+                                        alignItems: 'flex-start',
+                                    }}
+                                    resizeMode={'contain'}
+                                />
+                                <Text
+                                    style={{
+                                        fontSize: 18,
+                                        fontWeight: 'bold',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        alignSelf: 'center',
+                                        marginHorizontal: 35,
+                                    }}>
+                                    {item.categoriesName}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     );
                 }}
             />

@@ -29,30 +29,33 @@ export const useStyle = () => {
                // marginTop: 10,
             },
             productFlatListContainer: {
-                width: '45%',
+                width: '30%',
                 marginHorizontal: 5,
                 padding: 5,
                 margin: 5,
                 borderRadius:10,
                 borderWidth:1,
-                borderColor:'grey'
+                borderColor:'#d9cbca'
             },
             imageFlatlistStyle: {
-                width: 160,
-                height: 130,
+                width: 55,
+                height: 55,
                 borderRadius: 5,
+                justifyContent:'center',
+                alignSelf:'center'
             },
             productTitle: {
-                fontSize: 16,
+                fontSize: 14,
                 color: COLORS.title,
                 fontWeight: 'bold',
+                textAlign:'center'
             },
             appIntroSliderContainer: {
                 flex: 1,
             },
             imageStyle: {
                 width: '100%',
-                height: 300,
+                height: 155,
             },
             activeDotStyle: {
                 marginTop: '10%',

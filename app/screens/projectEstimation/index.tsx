@@ -7,18 +7,26 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { onSubmitRequest } from 'app/store/slice/projectEstimateSlice';
 import TextInputController from 'app/components/TextInputComponent';
 
-
 interface Props {}
 
 const projectEstimate: React.FC<Props> = (props) => {
     const dispatch = useDispatch();
-    const [name, setName] = useState();
-    const [city, setCity] = useState();
-    const [email, setEmail] = useState();
-    const [phonenumber, setPhonenumber] = useState();
-    const [message, setMessage] = useState();
+    const [name, setName] = useState<string>();
+    const [city, setCity] = useState<string>();
+    const [email, setEmail] = useState<string>();
+    const [phonenumber, setPhonenumber] = useState<number>();
+    const [message, setMessage] = useState<string>();
+
+    const clearForm = () => {
+        setName('');
+        setCity('');
+        setEmail('');
+        setPhonenumber(0);
+        setMessage('');
+    };
 
     const submit = () => {
+        // event.preventDefault();
         const payload = {
             name: name,
             city: city,
@@ -28,6 +36,7 @@ const projectEstimate: React.FC<Props> = (props) => {
         };
         if (name && city && email && phonenumber && message) {
             dispatch(onSubmitRequest(payload));
+            clearForm();
         } else {
             Alert.alert('Please Enter Valid Details');
         }
