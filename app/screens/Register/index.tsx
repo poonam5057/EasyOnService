@@ -36,6 +36,7 @@ const Register: React.FC = () => {
     const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
     const userRegData = useSelector((state) => state.register);
+    console.log("object iurfetu",userRegData)
 
     const onRegisterData = () => {
         const payload = {
@@ -49,7 +50,7 @@ const Register: React.FC = () => {
         if (name && email && password && phone && age && address) {
             // dispatch(registerActions.requestRegister(name, email, password, phone, age, address));
             dispatch(onRegisterRequest(payload));
-            Alert.alert('Alert', userRegData.data.message, [
+            Alert.alert('Alert', userRegData?.data?.message, [
                 { text: 'OK', onPress: () => NavigationService.goBack() },
             ]);
         } else {

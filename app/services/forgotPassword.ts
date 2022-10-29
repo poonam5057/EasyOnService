@@ -1,5 +1,5 @@
 import { apiClient, allApi } from 'app/services/client';
-
+import { service } from './apiConfig';
 export default function forgotPasswordData(email: string) {
-    return apiClient.post(allApi.FORGOTPASSWORD, { email: email });
+    return service.post(allApi.FORGOTPASSWORD, { email: email });
 }

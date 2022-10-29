@@ -17,7 +17,9 @@ const allApi = {
     SINGLECATEGORY: 'categories/single-categories/',
     LOGOUT: 'user/logout',
     BESTOFFER: 'bestOffers/getall',
-    PROJECTESTIMATE:'projectEstimation/Create'
+    PROJECTESTIMATE: 'projectEstimation/Create',
+    USER: 'user/',
+    PROFILE: 'user/',
 };
 
 export { apiClient, allApi };
