@@ -35,12 +35,17 @@ const Profile: React.FC = () => {
     const [address, setAddress] = useState('');
     //  const [passVisible, setPassVisible] = useState(true);
     const theme = useTheme();
+    // get single user data
     const singleUser = useSelector((state) => state.singleUser);
-    const userRegData = useSelector((state) => state.user);
+    console.log('trtrtr>>>>>>>>>>>>>>>>>>>>>>>', singleUser);
+    // get userid form login
+    const userData = useSelector((state) => state.user);
+    console.log('user id', userData.data.userId);
+    // edit profile 
     const ProfileData = useSelector((state) => state.profile);
-    console.log('profile', ProfileData);
+    console.log('profile value', ProfileData);
     useEffect(() => {
-        dispatch(onUserRequest(userRegData.userId));
+        dispatch(onUserRequest(userData.data.userId));
     }, []);
 
     useEffect(() => {
@@ -60,11 +65,11 @@ const Profile: React.FC = () => {
             phonenumber: phone,
             age: age,
             address: address,
-            id:userRegData.userId
+           // id: userData.data.userId,
         };
         if (name && email && phone && age && address) {
             dispatch(onProfileRequest(payload));
-            Alert.alert('Alert', ProfileData.data?.message, [
+            Alert.alert('Alert', ProfileData.data?.payload?.message, [
                 { text: 'OK', onPress: () => NavigationService.goBack() },
             ]);
         } else {
@@ -82,8 +87,7 @@ const Profile: React.FC = () => {
                     }}>
                     <Image
                         source={{
-                            uri:
-                                'https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png',
+                            uri: 'https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png',
                         }}
                         style={{
                             width: 150,

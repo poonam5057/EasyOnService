@@ -11,7 +11,7 @@ export default function editProfileData(
     // age: number,
     // address: string,
 ) {
-    return service.patch(allApi.PROFILE + data.id, {
+    return service.put(allApi.PROFILE + data.id, {
         name: data.name,
         email: data.email,
         password: data.password,

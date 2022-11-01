@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://5420-122-170-59-86.in.ngrok.io/api/',
+    baseURL: 'https://4076-27-57-93-28.in.ngrok.io/api/',
     responseType: 'json',
     withCredentials: true,
 });
@@ -18,7 +18,7 @@ const allApi = {
     LOGOUT: 'user/logout',
     BESTOFFER: 'bestOffers/getall',
     PROJECTESTIMATE: 'projectEstimation/Create',
-    USER: 'user/',
+    SINGLEUSER: 'user/',
     PROFILE: 'user/',
 };
 
