@@ -21,6 +21,7 @@ import TextInputController from 'app/components/TextInputComponent';
 import { COLORS, SIZES, width, height, FontSize } from '../../utils/constants';
 import { onProfileRequest } from 'app/store/slice/profileGetSlice';
 import { onUserRequest } from 'app/store/slice/userGetSlice';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Profile: React.FC = () => {
     // const id = useSelector((state: RootState) => state.userId.id);
@@ -44,9 +45,15 @@ const Profile: React.FC = () => {
     // edit profile 
     const ProfileData = useSelector((state) => state.profile);
     console.log('profile value', ProfileData);
-    useEffect(() => {
+ /*    useEffect(() => {
         dispatch(onUserRequest(userData.data.userId));
-    }, []);
+    }, []); */
+
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(onUserRequest(userData.data.userId));
+        }, [])
+      );
 
     useEffect(() => {
         if (singleUser) {
@@ -144,6 +151,7 @@ const Profile: React.FC = () => {
                         }}
                         style={styles.textInputController}
                         activeUnderlineColor={COLORS.subTitle}
+                        disabled
                     />
                 </View>
                 {/* <View style={styles.textInputView}>
@@ -177,6 +185,7 @@ const Profile: React.FC = () => {
                         }}
                         style={styles.textInputController}
                         activeUnderlineColor={COLORS.subTitle}
+                        disabled
                     />
                 </View>
                 <View style={styles.textInputView}>
