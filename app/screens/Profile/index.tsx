@@ -42,18 +42,18 @@ const Profile: React.FC = () => {
     // get userid form login
     const userData = useSelector((state) => state.user);
     console.log('user id', userData.data.userId);
-    // edit profile 
+    // edit profile
     const ProfileData = useSelector((state) => state.profile);
     console.log('profile value', ProfileData);
- /*    useEffect(() => {
+    /*    useEffect(() => {
         dispatch(onUserRequest(userData.data.userId));
     }, []); */
 
     useFocusEffect(
         React.useCallback(() => {
             dispatch(onUserRequest(userData.data.userId));
-        }, [])
-      );
+        }, []),
+    );
 
     useEffect(() => {
         if (singleUser) {
@@ -72,13 +72,13 @@ const Profile: React.FC = () => {
             phonenumber: phone,
             age: age,
             address: address,
-           // id: userData.data.userId,
+            // id: userData.data.userId,
         };
         if (name && email && phone && age && address) {
-            dispatch(onProfileRequest(payload));
-            Alert.alert('Alert', ProfileData.data?.payload?.message, [
-                { text: 'OK', onPress: () => NavigationService.goBack() },
-            ]);
+            dispatch(onProfileRequest(singleUser?.data?.postData?.id, payload));
+            // Alert.alert('Alert', ProfileData?.error?.message, [
+            //     { text: 'OK', onPress: () => NavigationService.goBack() },
+            // ]);
         } else {
             Alert.alert('Please fill all data');
         }

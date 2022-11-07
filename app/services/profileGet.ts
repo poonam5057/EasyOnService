@@ -2,8 +2,8 @@ import { apiClient, allApi } from 'app/services/client';
 import { service } from './apiConfig';
 
 export default function editProfileData(
+    userId: number,
     data: any,
-    // id: number,
     // name: string,
     // email: string,
     // password: string,
@@ -11,12 +11,15 @@ export default function editProfileData(
     // age: number,
     // address: string,
 ) {
-    return service.patch(allApi.PROFILE + data.id, {
+   
+    console.log("iiiiiii+++userId++++ id", userId);
+    return service.patch(allApi.PROFILE + userId, {
         name: data.name,
         email: data.email,
-        password: data.password,
+        //password: data.password,
         phonenumber: data.phone,
         age: data.age,
-        address: data.address,
+        address:data.address,
     });
+    
 }

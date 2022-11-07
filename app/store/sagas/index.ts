@@ -28,6 +28,7 @@ import { onSubmitRequest } from '../slice/projectEstimateSlice';
 import { onUserRequest } from '../slice/userGetSlice';
 import { onProfileRequest } from '../slice/profileGetSlice';
 
+
 export default function* watch() {
     yield all([takeEvery(onLoginRequest, loginSaga)]);
     yield all([takeEvery(onRegisterRequest, registerSaga)]);
@@ -41,4 +42,5 @@ export default function* watch() {
     yield all([takeEvery(onSubmitRequest, projectEstimateSaga)]);
     yield all([takeEvery(onUserRequest, userGetSaga)]);
     yield all([takeEvery(onProfileRequest, profileGetSaga)]);
+
 }

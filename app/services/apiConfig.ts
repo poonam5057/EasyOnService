@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 
-const baseURL = 'https://04c0-223-226-208-168.in.ngrok.io/api/';
+const baseURL = 'https://4dcc-175-100-133-243.in.ngrok.io/api/';
 
 const service = axios.create({ baseURL });
 

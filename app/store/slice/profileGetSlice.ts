@@ -12,8 +12,9 @@ const profileGetSlice = createSlice({
     name: 'Edit Profile',
     initialState,
     reducers: {
-        onProfileRequest: () => {
+        onProfileRequest: (state) => {
             return {
+                ...state,
                 data: null,
                 error: null,
             };
