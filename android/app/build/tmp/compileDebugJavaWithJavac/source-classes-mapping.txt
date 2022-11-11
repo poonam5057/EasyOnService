@@ -1,0 +1,9 @@
+com/koli/eos/MainActivity.java
+ com.koli.eos.MainActivity
+com/koli/eos/BuildConfig.java
+ com.koli.eos.BuildConfig
+com/koli/eos/MainApplication.java
+ com.koli.eos.MainApplication
+ com.koli.eos.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
